@@ -1,4 +1,4 @@
-package com.github.fabriciolfj.ifood.cadastro.controller;
+package com.github.fabriciolfj.ifood.cadastro.api.controller;
 
 import com.github.fabriciolfj.ifood.cadastro.domain.entity.Prato;
 import com.github.fabriciolfj.ifood.cadastro.domain.entity.Restaurante;

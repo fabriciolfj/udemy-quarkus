@@ -1,7 +1,10 @@
-package com.github.fabriciolfj.ifood.cadastro.controller;
+package com.github.fabriciolfj.ifood.cadastro.api.controller;
 
+import com.github.fabriciolfj.ifood.cadastro.api.dto.request.AdicionarRestauranteDTO;
+import com.github.fabriciolfj.ifood.cadastro.api.mapper.RestauranteMapper;
 import com.github.fabriciolfj.ifood.cadastro.domain.entity.Restaurante;
 
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -22,6 +25,9 @@ import java.util.Optional;
 @Consumes(MediaType.APPLICATION_JSON)
 public class RestauranteController {
 
+    @Inject
+    private RestauranteMapper mapper;
+
     @GET
     public List<Restaurante> getRestaurantes() {
         return Restaurante.listAll();
@@ -29,8 +35,9 @@ public class RestauranteController {
 
     @POST
     @Transactional
-    public Response adicionar(final Restaurante dto) {
-        dto.persist();
+    public Response adicionar(final AdicionarRestauranteDTO dto) {
+        final var restaurante = mapper.toEntity(dto);
+        restaurante.persist();
         return Response.status(Response.Status.CREATED).build();
     }
 
