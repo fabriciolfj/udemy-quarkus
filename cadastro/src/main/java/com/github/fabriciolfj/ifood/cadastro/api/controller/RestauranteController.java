@@ -1,6 +1,7 @@
 package com.github.fabriciolfj.ifood.cadastro.api.controller;
 
 import com.github.fabriciolfj.ifood.cadastro.api.dto.request.AdicionarRestauranteDTO;
+import com.github.fabriciolfj.ifood.cadastro.api.dto.request.AtualizaRestauranteDTO;
 import com.github.fabriciolfj.ifood.cadastro.api.mapper.RestauranteMapper;
 import com.github.fabriciolfj.ifood.cadastro.domain.entity.Restaurante;
 
@@ -44,7 +45,7 @@ public class RestauranteController {
     @PUT
     @Path("{id}")
     @Transactional
-    public void update(final Restaurante dto, @PathParam("id") final Long id) {
+    public void update(final AtualizaRestauranteDTO dto, @PathParam("id") final Long id) {
         Optional<Restaurante> restauranteOp = Restaurante.findByIdOptional(id);
         restauranteOp.map(restaurante -> {
             restaurante.nome = dto.nome;

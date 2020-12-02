@@ -1,9 +1,13 @@
 package com.github.fabriciolfj.ifood.cadastro.api.controller;
 
+import com.github.fabriciolfj.ifood.cadastro.api.dto.request.AdicionarPratoDTO;
+import com.github.fabriciolfj.ifood.cadastro.api.dto.request.AtualizarPratoDTO;
+import com.github.fabriciolfj.ifood.cadastro.api.mapper.PratoMapper;
 import com.github.fabriciolfj.ifood.cadastro.domain.entity.Prato;
 import com.github.fabriciolfj.ifood.cadastro.domain.entity.Restaurante;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -25,11 +29,14 @@ import java.util.Optional;
 @Tag(name = "restaurante")
 public class PratosController {
 
+    @Inject
+    private PratoMapper mapper;
+
     @PUT
     @Path("{idRestaurante}/pratos/{id}")
     @Transactional
     @Tag(name = "prato")
-    public void atualizar(@PathParam("idRestaurante") final Long idRestaurante, @PathParam("id") final Long id, final Prato dto) {
+    public void atualizar(@PathParam("idRestaurante") final Long idRestaurante, @PathParam("id") final Long id, final AtualizarPratoDTO dto) {
         validarExistenciaRestaurante(idRestaurante);
 
         final Optional<Prato> pratoop = Prato.findByIdOptional(id);
@@ -57,9 +64,10 @@ public class PratosController {
     @Path("{idRestaurante}/pratos")
     @Transactional
     @Tag(name = "prato")
-    public Response create(final Prato prato, @PathParam("idRestaurante") final Long idRestaurante) {
+    public Response create(final AdicionarPratoDTO dto, @PathParam("idRestaurante") final Long idRestaurante) {
         final Optional<Restaurante> restauranteop = Restaurante.findByIdOptional(idRestaurante);
         return restauranteop.map(restaurante -> {
+            final var prato = mapper.toEntity(dto);
             prato.restaurante = restaurante;
             prato.persist();
             return Response.status(Response.Status.CREATED).build();
