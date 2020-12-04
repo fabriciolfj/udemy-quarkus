@@ -29,3 +29,9 @@
       <artifactId>opentracing-jdbc</artifactId>
     </dependency>
 ```
+
+#### Metricas
+- Para nossa api expor dados, que serão consumidos pelo prometheus por exemplo, precisamos da dependência abaixo:
+```
+ mvn quarkus:add-extension -Dextensions="metrics"
+ ```
