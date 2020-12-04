@@ -12,3 +12,20 @@
 
 #### Possíveis eros
 - Caso recebe o erro keycloak Auth Error Error: Bad Request, error: invalid_grant, description: Account is not fully set up, ao solicitar o token, atualiza o password do user.
+
+
+#### Gerando imagens do prometheus e grafana:
+- docker build -f Dockerfile.prometheus -t prometheus-ifood .
+
+#### Traces
+- Para monitorar nossa aplicação, precisamos do jaeger e as depêndencias abaixo:
+```
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-opentracing</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.opentracing.contrib</groupId>
+      <artifactId>opentracing-jdbc</artifactId>
+    </dependency>
+```
