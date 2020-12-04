@@ -35,3 +35,10 @@
 ```
  mvn quarkus:add-extension -Dextensions="metrics"
  ```
+
+#### Flyway
+- Adicionando o flyway ao projeto
+```
+mvn quarkus:add-extension -Dextensions="flyway"
+
+```
