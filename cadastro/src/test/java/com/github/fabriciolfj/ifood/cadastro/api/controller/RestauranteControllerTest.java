@@ -5,11 +5,15 @@ import com.github.database.rider.core.api.configuration.DBUnit;
 import com.github.database.rider.core.api.configuration.Orthography;
 import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.fabriciolfj.ifood.cadastro.CadastroTestLifecycleManager;
+import com.github.fabriciolfj.ifood.cadastro.api.dto.request.AdicionarRestauranteDTO;
 import com.github.fabriciolfj.ifood.cadastro.domain.entity.Restaurante;
+import com.github.fabriciolfj.ifood.cadastro.util.TokenUtils;
 import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.RestAssured;
+import io.restassured.http.Header;
 import org.approvaltests.Approvals;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 @DBRider
@@ -18,11 +22,19 @@ import org.junit.jupiter.api.Test;
 @QuarkusTestResource(CadastroTestLifecycleManager.class)
 public class RestauranteControllerTest {
 
+    private String token;
+
+    @BeforeEach
+    public void setup() throws Exception {
+        token = TokenUtils.generateTokenString("/JWTProprietarioClaims.json", null);
+    }
+
     @Test
     @DataSet("restaurantes-cenario-1.yml")
     public void testBuscarRestaurantes() {
         final String resultado = RestAssured.given()
                 .when()
+                .header(new Header("Authorization", "Bearer " + token))
                 .get("/restaurantes")
                 .then()
                 .statusCode(200)
@@ -33,12 +45,14 @@ public class RestauranteControllerTest {
 
     @Test
     public void testAdicionarRestaurante() {
-        var restaurante = new Restaurante();
+        var restaurante = new AdicionarRestauranteDTO();
         restaurante.nome = "Restaurante 3";
         restaurante.proprietario = "Fabricio";
+        restaurante.cnpj = "68.562.575/0001-31";
 
         RestAssured.given()
                 .contentType("application/json")
+                .header(new Header("Authorization", "Bearer " + token))   
                 .body(restaurante)
                 .post("/restaurantes")
                 .then()

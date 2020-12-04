@@ -53,6 +53,14 @@
       <artifactId>quarkus-hibernate-validator</artifactId>
     </dependency>
     <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-opentracing</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.opentracing.contrib</groupId>
+      <artifactId>opentracing-jdbc</artifactId>
+    </dependency>
+    <dependency>
       <groupId>io.rest-assured</groupId>
       <artifactId>rest-assured</artifactId>
       <version>4.3.2</version>
