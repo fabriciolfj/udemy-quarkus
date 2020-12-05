@@ -42,3 +42,11 @@
 mvn quarkus:add-extension -Dextensions="flyway"
 
 ```
+
+#### Multiny
+- Biblioteca reactive, onde usamos o uni e mult.
+- Dependencias:
+
+```
+mvn quarkus:add-extension -Dextensions="resteasy-mutiny,jdbc-postgres, flyway, pg-client"
+```
