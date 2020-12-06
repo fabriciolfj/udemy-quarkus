@@ -2,7 +2,9 @@ package com.github.fabriciolfj.ifodd.mp.api.controller;
 
 import com.github.fabriciolfj.ifodd.mp.api.dto.PratoDTO;
 import com.github.fabriciolfj.ifodd.mp.domain.Prato;
+import com.github.fabriciolfj.ifodd.mp.domain.PratoCarrinho;
 import io.smallrye.mutiny.Multi;
+import io.smallrye.mutiny.Uni;
 import io.vertx.mutiny.pgclient.PgPool;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
@@ -12,7 +14,9 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 

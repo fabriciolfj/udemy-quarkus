@@ -1,21 +1,18 @@
 package com.github.fabriciolfj.ifodd.mp.api.dto;
 
-import io.vertx.mutiny.sqlclient.Row;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.math.BigDecimal;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+import io.vertx.mutiny.sqlclient.Row;
+
 public class PratoDTO {
 
-    private Long id;
-    private String nome;
-    private String descricao;
-    private BigDecimal preco;
+    public Long id;
+
+    public String nome;
+
+    public String descricao;
+
+    public BigDecimal preco;
 
     public static PratoDTO from(Row row) {
         PratoDTO dto = new PratoDTO();
