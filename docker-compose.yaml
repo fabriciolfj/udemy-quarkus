@@ -26,7 +26,6 @@ services:
     ports:
     - "8080:8080"
   jaeger_ifood:
-    container_name: jaeger_ifood
     image: jaegertracing/all-in-one:1.17
     ports:
       - "5775:5775/udp"
@@ -39,12 +38,10 @@ services:
       - "9411:9411"
 
   prometheus_ifood:
-    container_name: prometheus_ifood
     image: prometheus-ifood
     network_mode: "host"
 
   grafana_ifood:
-    container_name: grafana_ifood
     image: grafana/grafana:6.5.0
     network_mode: "host"
 
@@ -126,7 +123,6 @@ services:
       - elastic
   #roda na 8083
   connect:
-    container_name: connect
     image: debezium/connect:1.1
     environment:
       - BOOTSTRAP_SERVERS=kafka:9092

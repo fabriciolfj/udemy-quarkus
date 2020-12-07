@@ -1,6 +1,6 @@
 package com.github.fabriciolfj.ifood.pedido.domain;
 
-import org.bson.types.Decimal128;
+import java.math.BigDecimal;
 
 public class Prato {
 
@@ -8,5 +8,5 @@ public class Prato {
 
     public String descricao;
 
-    public Decimal128 preco;
+    public BigDecimal preco;
 }
