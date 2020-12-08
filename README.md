@@ -80,3 +80,9 @@ mvn quarkus:add-extension -Dextensions="io.quarkus:quarkus-smallrye-health"
 
 #### Command cli
 - Indicado para aplicações que não precisam de uma interface http, por exemplo: consumer e producer de streams.
+
+#### Picocli
+- Uma lib que facilida o uso de commandos via console, um exemplo abaixo executando o comando ola, passando o parâmetro joao.
+```
+java -jar target/command-mode-1.0.0-SNAPSHOT-runner.jar ola -n joao
+```
