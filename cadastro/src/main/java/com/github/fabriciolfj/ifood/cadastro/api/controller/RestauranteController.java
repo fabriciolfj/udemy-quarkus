@@ -5,7 +5,6 @@ import com.github.fabriciolfj.ifood.cadastro.api.dto.request.AtualizaRestaurante
 import com.github.fabriciolfj.ifood.cadastro.api.mapper.RestauranteMapper;
 import com.github.fabriciolfj.ifood.cadastro.domain.entity.Restaurante;
 import com.github.fabriciolfj.ifood.cadastro.infra.ConstraintViolationResponse;
-import io.netty.channel.ChannelHandler;
 import org.eclipse.microprofile.metrics.annotation.Counted;
 import org.eclipse.microprofile.metrics.annotation.SimplyTimed;
 import org.eclipse.microprofile.metrics.annotation.Timed;
@@ -54,6 +53,13 @@ public class RestauranteController {
     @Channel("restaurantes")
     private Emitter<String> emitter;
 
+    /*@Inject
+    private JsonWebToken jwt;
+
+    @Inject
+    @Claim(standard = Claims.sub)
+    private String sub;*/
+
     @GET
     @Counted(name = "Quantidade buscas restaurante")
     @SimplyTimed(name = "Tempo simples de busca")
@@ -68,6 +74,7 @@ public class RestauranteController {
     @APIResponse(responseCode = "400", content = @Content(schema = @Schema(allOf = ConstraintViolationResponse.class)))
     public Response adicionar(@Valid final AdicionarRestauranteDTO dto) {
         final var restaurante = mapper.toEntity(dto);
+        restaurante.proprietario = "a";
         restaurante.persist();
 
         final var json = JsonbBuilder.create();
@@ -80,7 +87,8 @@ public class RestauranteController {
     @Transactional
     public void update(final AtualizaRestauranteDTO dto, @PathParam("id") final Long id) {
         Optional<Restaurante> restauranteOp = Restaurante.findByIdOptional(id);
-        restauranteOp.map(restaurante -> {
+        restauranteOp.filter(r -> r.proprietario.equals("a"))
+                .map(restaurante -> {
             mapper.toUpdate(dto, restaurante);
             return restaurante;
         }).orElseThrow(() -> new NotFoundException());

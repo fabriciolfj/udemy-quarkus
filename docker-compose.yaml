@@ -11,7 +11,7 @@ services:
 
   postgres_cadastro:
     container_name: postgres_cadastro_ifodd
-    image: postgres:12.2
+    image: debezium/example-postgres # essa versao vem com as configuracoes necessarias para o connector do debezium
     environment:
       POSTGRES_USER: cadastro
       POSTGRES_PASSWORD: cadastro
@@ -92,6 +92,7 @@ services:
   # increase to at least [262144]
   # sudo sysctl -w vm.max_map_count=262144
 
+  #sudo sysctl -w vm.max_map_count=262144 execute antes
   elastic:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
     network_mode: "host"

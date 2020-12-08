@@ -13,9 +13,6 @@ import javax.validation.constraints.Size;
 @ValidDTO
 public class AdicionarRestauranteDTO implements DTO {
 
-    @NotBlank
-    public String proprietario;
-
     @Size(min = 3, max = 30)
     public String nome;
     public LocalizacaoDTO localizacao;

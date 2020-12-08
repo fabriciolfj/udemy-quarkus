@@ -8,14 +8,54 @@ import io.quarkus.mongodb.panache.PanacheMongoEntity;
 @MongoEntity(collection = "pedidos", database = "pedido")
 public class Pedido extends PanacheMongoEntity {
 
-    public String cliente;
+    private String cliente;
 
-    public List<Prato> pratos;
+    private List<Prato> pratos;
 
-    public Restaurante restaurante;
+    private Restaurante restaurante;
 
-    public String entregador;
+    private String entregador;
 
-    public Localizacao localizacaoEntregador;
+    private Localizacao localizacaoEntregador;
 
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<Prato> getPratos() {
+        return pratos;
+    }
+
+    public void setPratos(List<Prato> pratos) {
+        this.pratos = pratos;
+    }
+
+    public Restaurante getRestaurante() {
+        return restaurante;
+    }
+
+    public void setRestaurante(Restaurante restaurante) {
+        this.restaurante = restaurante;
+    }
+
+    public String getEntregador() {
+        return entregador;
+    }
+
+    public void setEntregador(String entregador) {
+        this.entregador = entregador;
+    }
+
+    public Localizacao getLocalizacaoEntregador() {
+        return localizacaoEntregador;
+    }
+
+    public void setLocalizacaoEntregador(Localizacao localizacaoEntregador) {
+        this.localizacaoEntregador = localizacaoEntregador;
+    }
 }

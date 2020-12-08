@@ -1,0 +1,10 @@
+{
+  buscarPratos {
+    nome
+    descricao
+    restaurante {
+      dono
+      nome
+    }
+  }
+}
