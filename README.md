@@ -73,3 +73,6 @@ mvn quarkus:add-extension -Dextensions="resteasy-mutiny,jdbc-postgres, flyway, p
 mvn quarkus:add-extension -Dextensions="io.quarkus:quarkus-smallrye-health"
 ```
 - Endoint: /health
+
+#### Debezium
+- Pegar eventos no banco de dados e transforma em streams, para postar em uma mensageria, por exemplo: kafka
