@@ -75,5 +75,5 @@ mvn quarkus:add-extension -Dextensions="io.quarkus:quarkus-smallrye-health"
 - Endoint: /health
 
 #### Debezium
-- Pegar eventos no banco de dados e transforma em streams, para postar em uma mensageria, por exemplo: kafka
+- Pega eventos no banco de dados e os transforma em streams, para postar em uma mensageria, por exemplo: kafka
 - Em resumo, qualquer alteração em qualquer linha na base, vira um record para o kafka.
