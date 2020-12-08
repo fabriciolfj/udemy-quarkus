@@ -8,3 +8,20 @@
     }
   }
 }
+
+
+{
+  buscarPratoPorId(id:1) {
+    descricao
+    nome
+    valor
+  }
+}
+//para alterar
+mutation{
+  alterar(restaurante: {
+    nome: "novo nome"
+  }) {
+    nome
+  }
+}
