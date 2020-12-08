@@ -56,3 +56,13 @@ mvn quarkus:add-extension -Dextensions="resteasy-mutiny,jdbc-postgres, flyway, p
   - point-to-point menssaging (anycast): enviar mensagem para a fila associada (não possui mais de 1 fila)
   - point-to-point address (anycast): vai mandar a mensagem para uma das filas associadas.
   - topic (multicast): vai mandar a mensagem para todas as filas associadas.
+  
+#### Log centralizado
+- Use a dependência logging gelf.
+
+```
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-logging-gelf</artifactId>
+    </dependency>
+```
