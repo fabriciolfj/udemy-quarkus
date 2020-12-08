@@ -89,3 +89,6 @@ java -jar target/command-mode-1.0.0-SNAPSHOT-runner.jar ola -n joao
 
 #### gRPC
 - É uma implementação do google, onde RPC siginifica remote procedure call, se assemelha ao lookup do ejb, mas podemos chamar métodos que estão em outra jvm,  ou máquina e etc.
+
+#### Graphql
+- Realizar consultas no meu endpoint rest.
