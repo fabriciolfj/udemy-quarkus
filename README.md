@@ -77,3 +77,6 @@ mvn quarkus:add-extension -Dextensions="io.quarkus:quarkus-smallrye-health"
 #### Debezium
 - Pega eventos no banco de dados e os transforma em streams, para postar em uma mensageria, por exemplo: kafka
 - Em resumo, qualquer alteração em qualquer linha na base, vira um record para o kafka.
+
+#### Command cli
+- Indicado para aplicações que não precisam de uma interface http, por exemplo: consumer e producer de streams.
