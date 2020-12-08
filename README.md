@@ -56,3 +56,39 @@ mvn quarkus:add-extension -Dextensions="resteasy-mutiny,jdbc-postgres, flyway, p
   - point-to-point menssaging (anycast): enviar mensagem para a fila associada (não possui mais de 1 fila)
   - point-to-point address (anycast): vai mandar a mensagem para uma das filas associadas.
   - topic (multicast): vai mandar a mensagem para todas as filas associadas.
+  
+#### Log centralizado
+- Use a dependência logging gelf.
+
+```
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-logging-gelf</artifactId>
+    </dependency>
+```
+
+#### Health
+- Para verificar a saúde da sua aplicação:
+```
+mvn quarkus:add-extension -Dextensions="io.quarkus:quarkus-smallrye-health"
+```
+- Endoint: /health
+
+#### Debezium
+- Pega eventos no banco de dados e os transforma em streams, para postar em uma mensageria, por exemplo: kafka
+- Em resumo, qualquer alteração em qualquer linha na base, vira um record para o kafka.
+
+#### Command cli
+- Indicado para aplicações que não precisam de uma interface http, por exemplo: consumer e producer de streams.
+
+#### Picocli
+- Uma lib que facilida o uso de commandos via console, um exemplo abaixo executando o comando ola, passando o parâmetro joao.
+```
+java -jar target/command-mode-1.0.0-SNAPSHOT-runner.jar ola -n joao
+```
+
+#### gRPC
+- É uma implementação do google, onde RPC siginifica remote procedure call, se assemelha ao lookup do ejb, mas podemos chamar métodos que estão em outra jvm,  ou máquina e etc.
+
+#### Graphql
+- Realizar consultas no meu endpoint rest.
