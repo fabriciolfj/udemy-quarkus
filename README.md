@@ -66,3 +66,9 @@ mvn quarkus:add-extension -Dextensions="resteasy-mutiny,jdbc-postgres, flyway, p
       <artifactId>quarkus-logging-gelf</artifactId>
     </dependency>
 ```
+
+#### Health
+- Para verificar a saúde da sua aplicação:
+```
+mvn quarkus:add-extension -Dextensions="io.quarkus:quarkus-smallrye-health"
+```
