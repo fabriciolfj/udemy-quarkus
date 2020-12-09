@@ -95,3 +95,4 @@ java -jar target/command-mode-1.0.0-SNAPSHOT-runner.jar ola -n joao
 
 #### Colocando em um ambiente kubernetes
 - mvn package -Dquarkus.container-image.build=true , gerar a imagem da aplicação.
+- kubectl apply -f ./target/kubernetes/kubernetes.yml 
