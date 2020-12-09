@@ -92,3 +92,6 @@ java -jar target/command-mode-1.0.0-SNAPSHOT-runner.jar ola -n joao
 
 #### Graphql
 - Realizar consultas no meu endpoint rest.
+
+#### Colocando em um ambiente kubernetes
+- mvn package -Dquarkus.container-image.build=true , gerar a imagem da aplicação.
